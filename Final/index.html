@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Nvsra</title>
+  <link rel="icon" href="assets/favicon/diamond.png" type="image/x-icon">
+
+  <!-- CSS  -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/1.7.22/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="css/lightgallery.css" /> 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico|Roboto" rel="stylesheet">
+
+</head>
+
+<body>
+  
+  <div class="container" id="background">
+      <h2 class="header center white-text">Nvsra Photography</h2><br>
+
+      <div class="row center">
+        <img id="splash" src="images/splash.png">
+      </div>
+
+      <h3 class="header center white-text"><a href="portraits.html">Enter Site</a></h3>
+    
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/lightgallery.min.js"></script>
+
+  <!-- lightgallery plugins -->
+  <script src="js/lg-thumbnail.min.js"></script>
+  <script src="js/lg-fullscreen.min.js"></script>
+
+  <script>
+
+  $(document).ready(function () {
+    var jsonURL = "https://api.myjson.com/bins/42d6j";
+    $.getJSON(jsonURL, function (json) {
+      var imgList= "";
+      $.each(json.portraits, function (i,f) {
+        $('#photos').append('<a href = "' + f.imgPath + '"><img src= "' + f.imgPath + '"/></a>');
+      });
+      $("#photos").lightGallery();
+    });
+
+    $(".dropdown-button").dropdown();
+    $('.collapsible').collapsible();
+  });
+
+  </script>
+
+  </body>
+</html>
